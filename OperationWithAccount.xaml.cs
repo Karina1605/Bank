@@ -42,8 +42,7 @@ namespace Bank
                 }
                 if (current != null)
                 {
-                    MessageBox.Show(current.Id.ToString()+" "+current.Name+" "+current.opened
-                        +current.GetType().FullName+" "+current.CurrentBalance);
+                    
                     UnlockEnabled();
                 }
                     

@@ -1,0 +1,25 @@
+﻿<Window x:Class="Bank.AccountSheetView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bank"
+        mc:Ignorable="d"
+        Title="Account Sheet" Height="510" Width="460">
+    <Grid>
+        <Label x:Name="Header" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="440" Height="62"/>
+        <DataGrid x:Name="Sheet" HorizontalAlignment="Left" Height="265" Margin="1,80,-0.4,0" VerticalAlignment="Top" Width="450"
+                  ItemsSource="{Binding }"/>
+        <Button Content="Save to file" HorizontalAlignment="Left" Margin="322,405,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <TextBox x:Name="FirstOperationDate" HorizontalAlignment="Left" Height="20" Margin="10,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.432,0.53"/>
+        <TextBox x:Name="LastOperationDate" HorizontalAlignment="Left" Height="20" Margin="10,440,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="CurrentBalance" HorizontalAlignment="Left" Height="20" Margin="160,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="First operation" HorizontalAlignment="Left" Margin="10,350,0,0" VerticalAlignment="Top"/>
+        <Label Content="Last operation" HorizontalAlignment="Left" Margin="10,410,0,0" VerticalAlignment="Top"/>
+        <Label Content="Current balance" HorizontalAlignment="Left" Margin="162,350,0,0" VerticalAlignment="Top"/>
+        <Label Content="Count of operations" HorizontalAlignment="Left" Margin="162,410,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="OperationsCount" HorizontalAlignment="Left" Height="20" Margin="162,440,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+
+    </Grid>
+</Window>

@@ -21,6 +21,8 @@ namespace Bank
         }
         public Deposit(decimal startCapital =0, string name ="", decimal percent=0):base(startCapital, name)
         {
+            if (Percent < 0)
+                throw new Exceptions.NegativeMonthlySum();
             Percent = percent* (decimal)0.01;
         }
         public Deposit() :base()

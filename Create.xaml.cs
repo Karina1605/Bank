@@ -114,39 +114,42 @@ namespace Bank
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            decimal d1, d2, d3;
-            Account res =null; 
-            switch (SelectType.SelectedIndex)
+            try
             {
-                case 0:
-                    if (Decimal.TryParse(this.StartSumTextBox.Text, out d1) && Decimal.TryParse(this.PercentstOrSumTextBox.Text, out d2)
-                        && this.NametextBox.Text!="")
-                        res = new Deposit(d1,this.NametextBox.Text, d2);
-                    break;
-                case 1:
-                    if (Decimal.TryParse(this.StartSumTextBox.Text, out d1) && Decimal.TryParse(this.PercentstOrSumTextBox.Text, out d2)
-                        && Decimal.TryParse(this.LimitTextBox.Text, out d3) && this.NametextBox.Text != "")
+                decimal d1, d2, d3;
+                Account res = null;
+                switch (SelectType.SelectedIndex)
+                {
+                    case 0:
+                        d1 = Decimal.Parse(this.StartSumTextBox.Text);
+                        d2 = Decimal.Parse(this.PercentstOrSumTextBox.Text);
+                        res = new Deposit(d1, this.NametextBox.Text, d2);
+                        break;
+                    case 1:
+                        d1 = Decimal.Parse(this.StartSumTextBox.Text);
+                        d2 = Decimal.Parse(this.PercentstOrSumTextBox.Text);
+                        d3 = Decimal.Parse(this.LimitTextBox.Text);
                         res = new CreditCard(d1, this.NametextBox.Text, d2, d3);
-                    break;
-                case 2:
-                    if (Decimal.TryParse(this.StartSumTextBox.Text, out d1) && Decimal.TryParse(this.PercentstOrSumTextBox.Text, out d2)
-                        && this.NametextBox.Text!="")
+                        break;
+                    case 2:
+                        d1 = Decimal.Parse(this.StartSumTextBox.Text);
+                        d2 = Decimal.Parse(this.PercentstOrSumTextBox.Text);
                         res = new PresentCard(d1, this.NametextBox.Text, d2);
                         break;
-            }
-            if (res == null)
-                MessageBox.Show("Incorrect values");
-            else
-            {
-                using (Model m =new Model())
+                }
+                using (Model m = new Model())
                 {
                     m.AddAccount(res);
                     m.Save();
                 }
-                SelectType.SelectedIndex = 0;
                 ClearFields();
-               // HideAll();
+                
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
             
         }
 

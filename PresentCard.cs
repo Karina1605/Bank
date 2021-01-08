@@ -20,6 +20,8 @@ namespace Bank
         }
         public PresentCard(decimal startCapital, string name, decimal monthSum) : base(startCapital, name)
         {
+            if (MonthlySum < 0)
+                throw new Exceptions.NegativeMonthlySum();
             MonthlySum = monthSum;
         }
         public PresentCard() : base()

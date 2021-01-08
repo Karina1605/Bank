@@ -71,6 +71,7 @@
     <Compile Include="CommonSheets.xaml.cs">
       <DependentUpon>CommonSheets.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Exceptions\MoneyOperationException.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Account.cs" />
     <Compile Include="Bank Application.xaml.cs">

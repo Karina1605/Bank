@@ -28,8 +28,10 @@ namespace Bank
         }
         public override void TakeSum(decimal sum)
         {
-            if (CurrentBalance<0 && Math.Abs(CurrentBalance - sum) > Limit)
-                throw new Exception();
+            if(sum<0)
+                throw new Exceptions.NegativeSum();
+            if (CurrentBalance-sum<0 && Math.Abs(CurrentBalance - sum) > Limit)
+                throw new Exceptions.TooMuchSumForTaking();
             else
             {
                 Operation operation = new Operation("Withdrawal", -sum, this.Id);
@@ -38,6 +40,8 @@ namespace Bank
         }
         public CreditCard(decimal startCapital, string name, decimal percent, decimal limit):base(startCapital, name)
         {
+            if (percent < 0 || limit < 0)
+                throw new Exceptions.NegativeMonthlySum();
             Percent = percent*(decimal)0.01;
             Limit = limit;
         }

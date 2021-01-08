@@ -19,16 +19,16 @@ namespace Bank
         public void AddSum(decimal sum)
         {
             if (sum < 0)
-                throw new Exception();
+                throw new Exceptions.NegativeSum();
             Operation operation = new Operation("Top up", sum, this.Id);
             Operations.Add(operation);
         }
         public virtual void TakeSum(decimal sum)
         {
             if (sum < 0)
-                throw new Exception();
+                throw new Exceptions.NegativeSum();
             if (CurrentBalance - sum < 0)
-                throw new Exception();
+                throw new Exceptions.TooMuchSumForTaking();
             Operation operation = new Operation("Withdrawal", -sum, this.Id);
             Operations.Add(operation);
         }
@@ -37,7 +37,9 @@ namespace Bank
         public Account(decimal startCapital, string Name)
         {
             if (startCapital < 0)
-                throw new Exception();
+                throw new Exceptions.NegativeStartBalance();
+            if (Name == "" || Name == null)
+                throw new Exceptions.EmptyAccountName();
             Operations = new List<Operation>();
             this.Name = Name;
             Operations.Add(new Operation("Create", startCapital, this.Id));

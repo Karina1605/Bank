@@ -79,35 +79,45 @@ namespace Bank
         private void MonthlyTranzaction_Click(object sender, RoutedEventArgs e)
         {
             current.MonthlyOperation();
-            
             commits++;
         }
 
         private void PutButton_Click(object sender, RoutedEventArgs e)
         {
-            decimal d1;
-            if (Decimal.TryParse(this.SumBox.Text, out d1) && d1>0)
+            try
             {
+                decimal d1 = Decimal.Parse(this.SumBox.Text);
                 current.AddSum(d1);
-                this.SumBox.Text = "";
-                commits++;
             }
-            else
-                MessageBox.Show("Incorrect Number");
+            catch (Exceptions.MoneyOperationException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.SumBox.Text = "";
+            }
         }
 
         private void TakeButton_Click(object sender, RoutedEventArgs e)
         {
-            decimal d1;
-            if (Decimal.TryParse(this.SumBox.Text, out d1) && d1 > 0)
+            try
             {
+                decimal d1 = Decimal.Parse(this.SumBox.Text);
                 current.TakeSum(d1);
-                this.SumBox.Text = "";
-                commits++;
             }
-                
-            else
-                MessageBox.Show("Incorrect Number");
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.SumBox.Text = "";
+            }
         }
 
         

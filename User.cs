@@ -9,7 +9,7 @@ namespace Bank
 {
     public class User
     {
-        private static string _aviableUsers = "Users.csv";
+        private static string _aviableUsers = Environment.CurrentDirectory +@"\Users.csv";
         private string _userName;
         private string _password;
         public string UserName
